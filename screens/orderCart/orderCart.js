@@ -4,14 +4,12 @@ import { connect } from "react-redux";
 import {cartItems} from '../../redux/reducer'
 import { icons, COLORS, SIZES, FONTS,images } from '../../constants';
 import CartView from '../cartView/cartView';
-import { useRoute } from '@react-navigation/native';
-import { useState } from "react";
 
-const orderCart = ({ navigation, props }) => {
+
+const orderCart = ({ navigation, cart }) => {
   // const {cartItems} = useState();
     
   
-    
 
     
     
@@ -79,25 +77,35 @@ function renderHeader() {
       </View>
   )
 }
+{/* <CartView source={item.photo} text1={item.name} text2={item.description}/> */}
 
-function _renderItem(item) {
+ function _renderItem({item}) {
   return(
-  
-<CartView source={item.photo} text1={item.name} text2={item.description}/>
+  <View>
+    <CartView source={item.photo} text1={item.name} text2={item.description}/>
+  </View>
+
 )
-}
 
-function renderCartItem(cartItems){
+}
+// console.log(_renderItem())
+// {cartItems.length > 0 ?
+//   : <Text>No items in your Cart</Text>
+// }
+function renderCartItem(){
   
   return(
+    <View>
     
  <FlatList 
-     data={cartItems}
+     data={cart}
      keyExtractor={(item,index) => index.toString()}
     
      renderItem={_renderItem}
      /> 
- 
+     
+    
+    </View>
      )
   }
   

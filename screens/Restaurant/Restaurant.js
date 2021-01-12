@@ -1,16 +1,16 @@
 import React from "react";
 import {View, Text, SafeAreaView,Image, TouchableOpacity, Animated } from "react-native";
 import { connect } from "react-redux";
-import { icons, COLORS, SIZES, FONTS } from '../../constants';
+import { icons } from '../../constants';
 import styles from './styles';
 import {addItem} from '../../redux/actions'
 
 
 
 
-const Restaurant = ({ route, navigation }) => {
+const Restaurant = ({ route, navigation, mostafa }) => {
  
-  
+  const [currentItem, setCurrentItem] = React.useState()
   const [restaurant, setRestaurant] = React.useState(null);
   const [currentLocation, setCurrentLocation] = React.useState(null);
   const [orderItems, setOrderItems] = React.useState([]);
@@ -221,7 +221,7 @@ function renderOrder(){
          <TouchableOpacity
          
            style={styles.button}
-           onPress={() => console.log(addItem(route.params.item))}>
+           onPress={() => (mostafa(route.params.item))}>
              
            <Text style={styles.buttonWord}>ADD TO CART</Text>
          </TouchableOpacity>
@@ -253,11 +253,11 @@ function renderOrder(){
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItem: item => dispatch(addItem(item))
+    mostafa: item => dispatch(addItem(item))
   }
 }
 
 
 
 
-export default connect(mapDispatchToProps)(Restaurant);
+export default connect(null,mapDispatchToProps)(Restaurant);

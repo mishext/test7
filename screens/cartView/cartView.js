@@ -4,8 +4,8 @@ import { COLORS, images, SIZES } from '../../constants';
 import styles from './styles'
 import { useRoute } from '@react-navigation/native';
 
-export default function CartView(){
-  
+export default function CartView(props){
+  console.log(props)
   const {source, text1, text2} = props;
 
   
